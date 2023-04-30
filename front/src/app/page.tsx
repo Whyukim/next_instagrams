@@ -13,7 +13,6 @@ const client = createClient({
 
 export default async function Home({}: any) {
   const pets = await client.fetch(`*[_type == "pet"]`);
-  console.log(pets);
 
   return (
     <>
@@ -29,21 +28,6 @@ export default async function Home({}: any) {
             ))}
           </ul>
         )}
-        {/* {!pets.length > 0 && <p>No pets to show</p>}
-        {pets.length > 0 && (
-          <div>
-            <pre>{JSON.stringify(pets, null, 2)}</pre>
-          </div>
-        )}
-        {!pets.length > 0 && (
-          <div>
-            <div>¯\_(ツ)_/¯</div>
-            <p>
-              Your data will show up here when you've configured everything
-              correctly
-            </p>
-          </div>
-        )} */}
       </main>
     </>
   );
