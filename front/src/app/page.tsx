@@ -1,8 +1,4 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import { createClient } from "next-sanity";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const client = createClient({
   projectId: "d7a89fh7",

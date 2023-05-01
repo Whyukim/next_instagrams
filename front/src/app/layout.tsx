@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="flex flex-col min-h-screen">
+    <html lang="en" className={`transition duration-300 ${inter.className}`}>
+      <body className="flex flex-col min-h-screen ">
         <Providers>
           <Header />
           <main className="grow w-full max-w-[1220px] mx-auto py-10 border">
