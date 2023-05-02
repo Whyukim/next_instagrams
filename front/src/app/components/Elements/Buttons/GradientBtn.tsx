@@ -1,21 +1,36 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { MouseEvent, useCallback } from "react";
 
 interface IGradientBtn {
-  href: string;
+  href?: string;
+  onClick?: any;
   round: string;
-  border: number;
+  padding: string;
+  title: string;
 }
 
-function GradientBtn({ href, round, border }: IGradientBtn) {
+function GradientBtn({ href, round, padding, title }: IGradientBtn) {
+  const router = useRouter();
+
+  const onClickButton = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+
+    if (href) router.push(href);
+    else {
+      console.log(1);
+    }
+  }, []);
   return (
-    <Link
-      href={href}
-      className={`bg-gradient-to-tr from-orange-300 via-red-500 to-indigo-600  p-[0.2rem] ${round}`}
+    <div
+      onClick={onClickButton}
+      className={`bg-gradient-to-tr from-orange-300 via-red-500 to-indigo-600  p-[0.2rem] ${round} cursor-pointer`}
     >
-      <div className={`bg-white dark:bg-black p-${border} ${round}`}>
-        로그인
+      <div className={`bg-white ${padding} ${round} dark:bg-black`}>
+        {title}
       </div>
-    </Link>
+    </div>
   );
 }
 

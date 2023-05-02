@@ -26,7 +26,12 @@ function HeaderNav({}: IHeaderNav) {
       <Link href={"/add"} className={navIcon}>
         {pathName == "/add" ? <BsPlusSquareFill /> : <BsPlusSquare />}
       </Link>
-      <GradientBtn href="/login" round="rounded-md" border={1} />
+      <GradientBtn
+        title={"로그인"}
+        href="/login"
+        round="rounded-md"
+        padding="p-1"
+      />
     </nav>
   );
 }

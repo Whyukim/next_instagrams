@@ -1,9 +1,9 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import Header from "./components/Headers/Header";
 import Providers from "./Providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const sans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`transition duration-300 ${inter.className}`}>
-      <body className="flex flex-col min-h-screen ">
+    <html lang="en" className={sans.className}>
+      <body className="flex flex-col min-h-screen transition duration-300 ">
         <Providers>
           <Header />
           <main className="grow w-full max-w-[1220px] mx-auto py-10 border">

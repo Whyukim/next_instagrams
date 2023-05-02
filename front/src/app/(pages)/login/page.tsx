@@ -1,7 +1,16 @@
-interface Iindex {}
+import GradientBtn from "@/app/components/Elements/Buttons/GradientBtn";
 
-function index({}: Iindex) {
-  return <div>login</div>;
+interface IloingPage {}
+
+async function loingPage({}: IloingPage) {
+  // const session = await getServerSession(authOptions);
+  // console.log(session);
+
+  return (
+    <section className="flex items-center justify-center mt-12">
+      <GradientBtn title={"Google Login"} round="rounded-md" padding="p-5" />
+    </section>
+  );
 }
 
-export default index;
+export default loingPage;

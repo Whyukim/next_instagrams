@@ -1,7 +1,7 @@
-interface Iindex {}
+interface IaddPage {}
 
-function index({}: Iindex) {
+function addPage({}: IaddPage) {
   return <div>add</div>;
 }
 
-export default index;
+export default addPage;

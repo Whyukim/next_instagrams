@@ -1,7 +1,7 @@
-interface Iindex {}
+interface IsearchPage {}
 
-function index({}: Iindex) {
+function searchPage({}: IsearchPage) {
   return <div>search</div>;
 }
 
-export default index;
+export default searchPage;
