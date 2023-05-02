@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { AiOutlineHome, AiFillHome } from "react-icons/ai";
 import { BsPlusSquare, BsPlusSquareFill } from "react-icons/bs";
 import { RiSearchLine, RiSearchFill } from "react-icons/ri";
+import GradientBtn from "../Elements/Buttons/GradientBtn";
 
 import DarkMode from "../Elements/DarkMode/DarkMode";
 
@@ -25,9 +26,7 @@ function HeaderNav({}: IHeaderNav) {
       <Link href={"/add"} className={navIcon}>
         {pathName == "/add" ? <BsPlusSquareFill /> : <BsPlusSquare />}
       </Link>
-      <Link href={"/login"} className={"border rounded-md p-2"}>
-        Sign in
-      </Link>
+      <GradientBtn href="/login" round="rounded-md" border={1} />
     </nav>
   );
 }
