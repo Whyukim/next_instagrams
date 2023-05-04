@@ -1,7 +1,8 @@
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
 import Header from "./components/Headers/Header";
-import Providers from "./Providers";
+import ProviderAuth from "./context/AuthContext";
+import Providers from "./context/ThemeContext";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -18,12 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={sans.className}>
       <body className="flex flex-col min-h-screen transition duration-300 ">
-        <Providers>
-          <Header />
-          <main className="grow w-full max-w-[1220px] mx-auto py-10 border">
-            {children}
-          </main>
-        </Providers>
+        <ProviderAuth>
+          <Providers>
+            <Header />
+            <main className="grow w-full max-w-[1220px] mx-auto py-10 border">
+              {children}
+            </main>
+          </Providers>
+        </ProviderAuth>
       </body>
     </html>
   );
