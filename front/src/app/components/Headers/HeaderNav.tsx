@@ -8,12 +8,14 @@ import { RiSearchLine, RiSearchFill } from "react-icons/ri";
 import { useSession, signIn, signOut } from "next-auth/react";
 import GradientClickBtn from "../Elements/Buttons/GradientClickBtn";
 import DarkMode from "../Elements/DarkMode/DarkMode";
+import Avatar from "../Elements/Avatar";
 
 interface IHeaderNav {}
 
 function HeaderNav({}: IHeaderNav) {
   const pathName = usePathname();
   const { data: session } = useSession();
+  const user = session?.user;
 
   return (
     <nav className="flex items-center gap-4">
@@ -27,6 +29,13 @@ function HeaderNav({}: IHeaderNav) {
       <Link href={"/add"} className={navIcon}>
         {pathName == "/add" ? <BsPlusSquareFill /> : <BsPlusSquare />}
       </Link>
+      {user && (
+        <div>
+          <Link href={`/user/${user.username}`}>
+            <Avatar image={user.image} />
+          </Link>
+        </div>
+      )}
       {session ? (
         <GradientClickBtn
           title={"로그아웃"}

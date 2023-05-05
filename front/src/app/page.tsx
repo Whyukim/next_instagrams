@@ -8,7 +8,7 @@ const client = createClient({
 });
 
 export default async function Home({}: any) {
-  const pets = await client.fetch(`*[_type == "pet"]`);
+  // const pets = await client.fetch(`*[_type == "pet"]`);
 
   return (
     <>
@@ -17,13 +17,13 @@ export default async function Home({}: any) {
       </header>
       <main>
         <h2>pets</h2>
-        {pets.length > 0 && (
+        {/* {pets.length > 0 && (
           <ul>
             {pets.map((pet: any) => (
               <li key={pet._id}>{pet?.name}</li>
             ))}
           </ul>
-        )}
+        )} */}
       </main>
     </>
   );
