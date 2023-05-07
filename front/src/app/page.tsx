@@ -7,14 +7,17 @@ import SideBar from "./components/Main/SideBar";
 
 export default async function HomePage({}: any) {
   const session = await getServerSession(authOptions);
+  const user = session?.user;
+
+  if (!user) redirect("/auth/signin");
 
   return (
-    <section className="grid grid-cols-[1fr_minmax(120px,_250px)] ">
+    <section className="grid grid-cols-1 md:grid-cols-[1fr_minmax(120px,_250px)]  max-w-[800px] mx-auto ">
       <main>
         <FollowingBar />
         <PostList />
       </main>
-      <SideBar />
+      <SideBar user={user} />
     </section>
   );
 }

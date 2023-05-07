@@ -1,14 +1,14 @@
 "use client";
 
+import { User } from "app/model/user";
 import { useSession } from "next-auth/react";
 import Avatar from "../Elements/Avatar";
 
-interface ISideBar {}
+interface ISideBar {
+  user: User;
+}
 
-function SideBar({}: ISideBar) {
-  const { data: session } = useSession();
-  const user = session?.user;
-
+function SideBar({ user }: ISideBar) {
   const list = [
     "About ・",
     "Help ・",
@@ -20,6 +20,7 @@ function SideBar({}: ISideBar) {
     "Location ・",
     "Language",
   ];
+  console.log(user);
 
   return (
     <article>
@@ -27,12 +28,10 @@ function SideBar({}: ISideBar) {
         {user && (
           <li className="flex gap-3">
             <Avatar image={user.image} size="big" border={false} />
-            <div>
+            <span>
               <h2 className="font-bold">{user.email}</h2>
-              <span className="text-gray-500 dark:text-gray-300">
-                {user.name}
-              </span>
-            </div>
+              <p className="text-gray-500 dark:text-gray-300">{user.name}</p>
+            </span>
           </li>
         )}
         <li>

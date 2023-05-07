@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import Header from "./components/Headers/Header";
 import ProviderAuth from "./context/AuthContext";
 import Providers from "./context/ThemeContext";
+import SWRProvider from "./context/SWRConText";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -22,8 +23,8 @@ export default function RootLayout({
         <ProviderAuth>
           <Providers>
             <Header />
-            <main className="grow w-full max-w-[1220px] mx-auto py-10 border">
-              {children}
+            <main className="bg-gray-100 grow w-full max-w-[1220px] mx-auto py-10 border">
+              <SWRProvider>{children}</SWRProvider>
             </main>
           </Providers>
         </ProviderAuth>
