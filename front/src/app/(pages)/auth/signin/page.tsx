@@ -1,4 +1,4 @@
-import { handler } from "app/api/auth/[...nextauth]/route";
+import { authOptions } from "app/api/auth/[...nextauth]/route";
 import SignIn from "app/components/Elements/Buttons/SignIn";
 import { getServerSession } from "next-auth";
 import { getProviders } from "next-auth/react";
@@ -9,7 +9,7 @@ interface ISignPage {
 }
 
 async function SignPage({ searchParams: { callbackUrl } }: ISignPage) {
-  const session = await getServerSession(handler);
+  const session = await getServerSession(authOptions);
 
   if (session) redirect("/");
 

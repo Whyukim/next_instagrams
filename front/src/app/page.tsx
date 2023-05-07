@@ -1,12 +1,20 @@
-export default async function Home({}: any) {
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import FollowingBar from "./components/Main/FollowingBar";
+import PostList from "./components/Main/PostList";
+import SideBar from "./components/Main/SideBar";
+
+export default async function HomePage({}: any) {
+  const session = await getServerSession(authOptions);
+
   return (
-    <>
-      <header>
-        <h1>Sanity + Next.js</h1>
-      </header>
+    <section className="grid grid-cols-[1fr_minmax(120px,_250px)] ">
       <main>
-        <h2>pets</h2>
+        <FollowingBar />
+        <PostList />
       </main>
-    </>
+      <SideBar />
+    </section>
   );
 }
