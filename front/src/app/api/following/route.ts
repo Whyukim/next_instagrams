@@ -1,13 +1,23 @@
+import { getUser } from "app/service/addUser";
 import { getUserFollowing } from "app/service/getUserFollowing";
 import { client } from "app/service/sanity";
-import { NextRequest } from "next/server";
+import { getServerSession } from "next-auth";
+import { NextRequest, NextResponse } from "next/server";
+import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function GET(req: Request) {
-  console.log(req);
-  const query = `*[_type == "user" && email == "devhyukim@gmail.com"] | select(following)`;
-  const results = await client.fetch(query).then((res) => {
-    console.log(res);
-  });
+  const session = await getServerSession(authOptions);
+  const email = session?.user?.email;
 
-  return new Response("Hello, Next.js!");
+  // const query = `*[_type == "user" && email == "${email}"][0]{following}`;
+  const query = `*[_type == "user" && email == "${email}"]{ 
+    "following_users": *[_type == "user" && _id in ^.following[]._ref]{
+      _id,
+      email,
+      image,
+    }
+  }`;
+  const results = await client.fetch(query).then((res) => res[0]);
+
+  return NextResponse.json(results);
 }

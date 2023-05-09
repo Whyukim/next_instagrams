@@ -12,8 +12,8 @@ export default async function HomePage({}: any) {
   if (!user) redirect("/auth/signin");
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-[1fr_minmax(120px,_250px)]  max-w-[800px] mx-auto ">
-      <main>
+    <section className="grid grid-cols-1 gap-8 mx-auto md:grid-cols-[3fr_1fr] max-w-[850px] ">
+      <main className="max-w-full overflow-hidden">
         <FollowingBar />
         <PostList />
       </main>

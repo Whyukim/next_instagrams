@@ -20,7 +20,6 @@ function SideBar({ user }: ISideBar) {
     "Location ・",
     "Language",
   ];
-  console.log(user);
 
   return (
     <article>

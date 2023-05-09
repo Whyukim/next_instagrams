@@ -4,3 +4,10 @@ export interface User {
   email: string;
   image?: string;
 }
+
+export type SimpleUser = Pick<User, "username" | "image">;
+export interface DetailUser extends User {
+  following: SimpleUser[];
+  followers: SimpleUser[];
+  bookmarks: string[];
+}
