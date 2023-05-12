@@ -1,7 +1,13 @@
+import PostCard from "components/Forms/Post/PostCard";
+
 interface IPostList {}
 
 function PostList({}: IPostList) {
-  return <div>PostList</div>;
+  return (
+    <section>
+      <PostCard />
+    </section>
+  );
 }
 
 export default PostList;

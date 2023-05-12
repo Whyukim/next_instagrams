@@ -1,4 +1,4 @@
-import { getUserByUsername } from "app/service/addUser";
+import { getUserByUsername } from "service/addUser";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/route";

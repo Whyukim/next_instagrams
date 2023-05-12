@@ -23,7 +23,7 @@ export default function RootLayout({
         <ProviderAuth>
           <Providers>
             <Header />
-            <main className="bg-gray-100 grow w-full max-w-[1220px] mx-auto py-10 border">
+            <main className="bg-primary grow w-full max-w-[1220px] mx-auto py-10 border">
               <SWRProvider>{children}</SWRProvider>
             </main>
           </Providers>

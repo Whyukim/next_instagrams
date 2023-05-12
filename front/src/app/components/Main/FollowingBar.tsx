@@ -4,7 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import useSWR from "swr";
 import { SyncLoader } from "react-spinners";
 import Avatar from "../Elements/Avatar";
-import { DetailUser } from "app/model/user";
+import { DetailUser } from "model/user";
 import Link from "next/link";
 import ScrollableBar from "./ScrollableBar";
 
@@ -19,10 +19,8 @@ function FollowingBar({}: IFollowingBar) {
     ...data?.following,
   ];
 
-  // if (data) a = [...data.following_users, ...data.following_users];
-
   return (
-    <section className="w-full flex justify-center items-center p-4 bg-gray-50 shadow-md shadow-neutral-300 mb-4 rounded-lg min-h-[90px] overflow-auto ">
+    <section className="w-full flex justify-center items-center p-4 bg-blocks shadow-md shadow-neutral-300 mb-4 rounded-lg min-h-[90px] overflow-auto ">
       {isLoading ? (
         <div className="w-full h-full flex items-center justify-center">
           <SyncLoader color="#36d7b7" />
@@ -46,19 +44,6 @@ function FollowingBar({}: IFollowingBar) {
           ))}
         </ScrollableBar>
       )}
-
-      {/* <ul>
-            <li>
-        <Carousel responsive={responsive}>
-              <Link>
-
-              </Link>
-          {a?.map((v: any) => (
-            <Avatar image={v.image} size="big" border={true} />
-          ))}
-          </li>
-        </ul>
-        </Carousel> */}
     </section>
   );
 }

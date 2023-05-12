@@ -10,6 +10,8 @@ module.exports = {
     extend: {
       colors: {
         darkModeBg: "var(--hello)",
+        primary: "var(--background-primay)",
+        blocks: "var(--background-blocks)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -25,7 +25,7 @@ export async function getUser({ id, username, name, email, image }: props) {
 export async function getUserByUsername(username: string) {
   return client.fetch(`*[_type == "user" && username == "${username}"][0]{ 
     ...,
-  "id":_id,
+    "id":_id,
     following[]->{username,image},
     followers[]->{username,image},
     "bookmarks":bookmarks[]->_id
