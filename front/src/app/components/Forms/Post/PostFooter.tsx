@@ -8,7 +8,6 @@ interface IPostFooter {
 }
 
 function PostFooter({ user }: IPostFooter) {
-  console.log(user);
   return (
     <li>
       <div className="grid gap-3 p-3">

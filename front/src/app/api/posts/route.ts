@@ -2,8 +2,9 @@ import { getUserByUsername } from "service/addUser";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/route";
+import { getPosts } from "service/getPosts";
 
-export async function GET() {
+export async function GET(request: Request) {
   const session = await getServerSession(authOptions);
   const user = session?.user;
 
@@ -11,5 +12,5 @@ export async function GET() {
     return new Response("Authentication Error", { status: 401 });
   }
 
-  return getUserByUsername(user.username).then((res) => NextResponse.json(res));
+  return getPosts(user.username).then((res) => NextResponse.json(res));
 }

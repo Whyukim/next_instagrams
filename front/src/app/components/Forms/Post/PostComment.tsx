@@ -13,7 +13,10 @@ function PostComment({}: IPostComment) {
       <button type="button">
         <Smile />
       </button>
-      <input type="text" className="flex-grow p-2 outline-none" />
+      <input
+        type="text"
+        className="flex-grow p-2 outline-none bg-transparent"
+      />
       <button type="submit">Post</button>
     </form>
   );
