@@ -8,14 +8,13 @@ function PostComment({}: IPostComment) {
       onSubmit={() => {
         console.log(1);
       }}
-      className="flex border-t-2 px-3"
+      className="flex px-3 items-center"
     >
-      <button type="button">
-        <Smile />
-      </button>
+      <Smile />
       <input
         type="text"
         className="flex-grow p-2 outline-none bg-transparent"
+        placeholder="Add a comment..."
       />
       <button type="submit">Post</button>
     </form>

@@ -1,29 +1,28 @@
 import BookMarks from "components/Elements/icons/BookMarks";
 import Heart from "components/Elements/icons/Heart";
 import TextBold from "components/Elements/Texts/TextBold";
+import { parseDate } from "util/date";
+import PostActionBar from "./PostActionBar";
 import PostComment from "./PostComment";
 
 interface IPostFooter {
-  user: any;
+  likes: string[];
+  username: string;
+  text: string;
+  createdAt: string;
 }
 
-function PostFooter({ user }: IPostFooter) {
+function PostFooter({ likes, username, text, createdAt }: IPostFooter) {
   return (
-    <li>
-      <div className="grid gap-3 p-3">
-        <div className="flex justify-between items-center">
-          <Heart fill={false} />
-          <BookMarks fill={false} />
-        </div>
-        <b className="font-semibold">0 like</b>
-        <span className="flex gap-2">
-          <TextBold>anna</TextBold>
-          <p>hello</p>
-        </span>
-        <p className="text-gray-400">2 days ago</p>
-      </div>
+    <div>
+      <PostActionBar
+        likes={likes}
+        username={username}
+        text={text}
+        createdAt={createdAt}
+      />
       <PostComment />
-    </li>
+    </div>
   );
 }
 

@@ -2,15 +2,16 @@ import Avatar from "components/Elements/Avatar";
 import TextBold from "components/Elements/Texts/TextBold";
 
 interface IPostHeader {
-  user: any;
+  username: string;
+  userImage: string;
 }
 
-function PostHeader({ user }: IPostHeader) {
+function PostHeader({ userImage, username }: IPostHeader) {
   return (
-    <li className="flex items-center gap-3 p-3">
-      <Avatar image={user?.image} border size={"medium"} />
-      <TextBold>{user.username}</TextBold>
-    </li>
+    <div className="flex items-center gap-3 p-3">
+      <Avatar image={userImage} border size={"medium"} />
+      <TextBold>{username}</TextBold>
+    </div>
   );
 }
 

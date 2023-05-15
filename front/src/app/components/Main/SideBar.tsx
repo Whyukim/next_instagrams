@@ -36,7 +36,9 @@ function SideBar({ user }: ISideBar) {
         <li>
           <ul className="flex grow gap-2 max-w-full flex-wrap">
             {list.map((v) => (
-              <li className="text-gray-400 cursor-pointer">{v}</li>
+              <li key={v} className="text-gray-400 cursor-pointer">
+                {v}
+              </li>
             ))}
           </ul>
         </li>

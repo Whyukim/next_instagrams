@@ -1,9 +1,8 @@
-import Link from "next/link";
-
+type AvatarSize = "big" | "medium" | "small";
 interface IAvatar {
   image?: string | null;
   border: boolean;
-  size: "big" | "medium" | "small";
+  size: AvatarSize;
 }
 
 function Avatar({ image, border, size }: IAvatar) {
@@ -23,14 +22,24 @@ function Avatar({ image, border, size }: IAvatar) {
 
 export default Avatar;
 
-function getStyle(size: string, border: boolean) {
-  const baseStyle = ` rounded-full cursor-pointer`;
+function getStyle(size: AvatarSize, border: boolean) {
+  const baseStyle = `rounded-full cursor-pointer`;
   const borderStyle = border
     ? "bg-gradient-to-tr from-orange-300 via-red-500 to-indigo-600  p-[0.15rem]"
     : "";
 
-  const sizeStyle =
-    size == "big" ? "w-16 h-16" : size == "small" ? "w-9 h-9" : "w-12 h-12";
+  const sizeStyle = getImageSizeStyle(size);
 
   return `${baseStyle} ${sizeStyle} ${borderStyle}`;
+}
+
+function getImageSizeStyle(size: AvatarSize): string {
+  switch (size) {
+    case "small":
+      return "w-9 h-9";
+    case "medium":
+      return "w-12 h-12";
+    case "big":
+      return "w-16 h-16";
+  }
 }
