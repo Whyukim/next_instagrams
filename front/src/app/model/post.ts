@@ -1,4 +1,4 @@
-interface Comment {
+export interface Comment {
   comment: string;
   username: string;
   image: string;

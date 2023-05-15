@@ -4,7 +4,7 @@ import TextBold from "components/Elements/Texts/TextBold";
 import { parseDate } from "util/date";
 
 interface IPostActionBar {
-  text: string;
+  text?: string;
   likes: string[];
   username: string;
   createdAt: string;
@@ -20,10 +20,12 @@ function PostActionBar({ text, likes, username, createdAt }: IPostActionBar) {
       <b className="font-semibold">{`${likes?.length ?? 0} ${
         likes?.length > 1 ? "likes" : "like"
       }`}</b>
-      <span className="flex gap-2">
-        <TextBold>{username}</TextBold>
-        <p>{text}</p>
-      </span>
+      {text && (
+        <span className="flex gap-2">
+          <TextBold>{username}</TextBold>
+          <p>{text}</p>
+        </span>
+      )}
       <p className="text-gray-400">{parseDate(createdAt)}</p>
     </div>
   );

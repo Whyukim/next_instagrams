@@ -8,7 +8,7 @@ import PostComment from "./PostComment";
 interface IPostFooter {
   likes: string[];
   username: string;
-  text: string;
+  text?: string;
   createdAt: string;
 }
 

@@ -8,7 +8,7 @@ function PostComment({}: IPostComment) {
       onSubmit={() => {
         console.log(1);
       }}
-      className="flex px-3 items-center"
+      className="flex px-3 items-center border-t-2 border-neutral-300"
     >
       <Smile />
       <input

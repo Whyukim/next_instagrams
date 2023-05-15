@@ -3,7 +3,6 @@ import { SimplePost } from "model/post";
 import PostFooter from "./PostFooter";
 import PostHeader from "./PostHeader";
 import PostImage from "./PostImage";
-
 interface IPostCard {
   post: SimplePost;
   priority: boolean;
@@ -15,7 +14,7 @@ function PostCard({ post, priority = false }: IPostCard) {
   return (
     <li className=" bg-blocks shadow-md shadow-neutral-300 border-2 rounded-xl">
       <PostHeader userImage={userImage} username={username} />
-      <PostImage image={image} priority={priority} />
+      <PostImage post={post} priority={priority} />
       <PostFooter
         likes={likes}
         username={username}
