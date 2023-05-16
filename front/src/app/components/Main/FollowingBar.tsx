@@ -20,7 +20,7 @@ function FollowingBar({}: IFollowingBar) {
   ];
 
   return (
-    <section className="w-full flex justify-center items-center p-4 bg-blocks shadow-md shadow-neutral-300 mb-4 rounded-lg min-h-[90px] overflow-auto ">
+    <section className="w-full flex justify-center items-center p-4 bg-blocks shadow-md shadow-neutral-300 mb-4 rounded-lg min-h-[90px] overflow-auto relative z-0">
       {isLoading ? (
         <div className="w-full h-full flex items-center justify-center">
           <SyncLoader color="#36d7b7" />
@@ -36,7 +36,7 @@ function FollowingBar({}: IFollowingBar) {
               href={`/user/${username}`}
               className="flex flex-col items-center w-20"
             >
-              <Avatar image={image} border size="big" />
+              <Avatar image={image} highlight size="large" />
               <p className="w-full text-sm text-center text-ellipsis overflow-hidden">
                 {username}
               </p>

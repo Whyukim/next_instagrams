@@ -1,18 +1,14 @@
 "use client";
-import PostModal from "components/Elements/Modals/PostModal";
-import { SimplePost } from "model/post";
+
 import Image from "next/image";
-import { useState } from "react";
 
 interface IPostImage {
-  post: SimplePost;
+  image: string;
   priority: boolean;
+  setOpenModal: any;
 }
 
-function PostImage({ post, priority }: IPostImage) {
-  const { image } = post;
-  const [showImage, setShowImage] = useState(false);
-
+function PostImage({ image, priority, setOpenModal }: IPostImage) {
   return (
     <div>
       <Image
@@ -22,9 +18,8 @@ function PostImage({ post, priority }: IPostImage) {
         width={500}
         height={500}
         priority={priority}
-        onClick={() => setShowImage(true)}
+        onClick={() => setOpenModal(true)}
       />
-      <PostModal show={showImage} setShow={setShowImage} post={post} />
     </div>
   );
 }

@@ -32,7 +32,7 @@ function HeaderNav({}: IHeaderNav) {
       {user && (
         <div>
           <Link href={`/user/${user.username}`}>
-            <Avatar image={user.image} border={true} size="small" />
+            <Avatar image={user.image} highlight size="small" />
           </Link>
         </div>
       )}

@@ -26,7 +26,7 @@ function SideBar({ user }: ISideBar) {
       <ul className="flex flex-col gap-10">
         {user && (
           <li className="flex gap-3">
-            <Avatar image={user.image} size="big" border={false} />
+            <Avatar image={user.image} size="large" />
             <span>
               <h2 className="font-bold">{user.email}</h2>
               <p className="text-gray-500 dark:text-gray-300">{user.name}</p>

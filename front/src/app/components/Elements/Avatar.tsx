@@ -1,45 +1,65 @@
-type AvatarSize = "big" | "medium" | "small";
-interface IAvatar {
+type AvatarSize = "small" | "medium" | "large" | "xlarge";
+type Props = {
   image?: string | null;
-  border: boolean;
-  size: AvatarSize;
-}
+  size?: AvatarSize;
+  highlight?: boolean;
+};
 
-function Avatar({ image, border, size }: IAvatar) {
+export default function Avatar({
+  image,
+  size = "large",
+  highlight = false,
+}: Props) {
   return (
-    <div className={getStyle(size, border)}>
+    <div className={getContainerStyle(size, highlight)}>
+      {/* eslint-disable-next-line @next/next/no-img-element*/}
       <img
-        className={`w-full h-full object-cover rounded-full ${
-          border && "bg-white p-[2px]"
-        }`}
+        className={`bg-white object-cover rounded-full 
+        ${getImageSizeStyle(size).image}`}
+        alt="user profile"
         src={image ?? undefined}
-        alt="profile"
         referrerPolicy="no-referrer"
       />
     </div>
   );
 }
 
-export default Avatar;
-
-function getStyle(size: AvatarSize, border: boolean) {
-  const baseStyle = `rounded-full cursor-pointer`;
-  const borderStyle = border
-    ? "bg-gradient-to-tr from-orange-300 via-red-500 to-indigo-600  p-[0.15rem]"
+function getContainerStyle(size: AvatarSize, highlight: boolean): string {
+  const baseStyle = "rounded-full flex justify-center items-center";
+  const highlightStyle = highlight
+    ? "bg-gradient-to-bl from-fuchsia-600 via-rose-500 to-amber-300"
     : "";
-
-  const sizeStyle = getImageSizeStyle(size);
-
-  return `${baseStyle} ${sizeStyle} ${borderStyle}`;
+  const { container } = getImageSizeStyle(size);
+  return `${baseStyle} ${highlightStyle} ${container}`;
 }
 
-function getImageSizeStyle(size: AvatarSize): string {
+type ImageSizeStyle = {
+  container: string;
+  image: string;
+};
+function getImageSizeStyle(size: AvatarSize): ImageSizeStyle {
   switch (size) {
     case "small":
-      return "w-9 h-9";
+      return {
+        container: "w-9 h-9",
+        image: "w-[34px] h-[34px] p-[0.1rem]",
+      };
     case "medium":
-      return "w-12 h-12";
-    case "big":
-      return "w-16 h-16";
+      return {
+        container: "w-11 h-11",
+        image: "w-[42px] h-[42px] p-[0.1rem]",
+      };
+    case "large":
+      return {
+        container: "w-[68px] h-[68px]",
+        image: "w-16 h-16 p-[0.2rem]",
+      };
+    case "xlarge":
+      return {
+        container: "w-[142px] h-[142px]",
+        image: "w-[138px] h-[138px] p-[0.3rem]",
+      };
+    default:
+      throw new Error(`Unsupported type size: ${size}`);
   }
 }

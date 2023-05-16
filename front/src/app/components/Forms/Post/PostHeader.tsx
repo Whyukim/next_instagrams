@@ -9,7 +9,7 @@ interface IPostHeader {
 function PostHeader({ userImage, username }: IPostHeader) {
   return (
     <div className="flex items-center gap-3 p-3">
-      <Avatar image={userImage} border size={"medium"} />
+      <Avatar image={userImage} highlight size={"medium"} />
       <TextBold>{username}</TextBold>
     </div>
   );

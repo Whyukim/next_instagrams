@@ -19,15 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={sans.className}>
-      <body className="flex flex-col min-h-screen transition duration-300 ">
+      <body className="bg-primary flex flex-col min-h-screen transition duration-300 ">
         <ProviderAuth>
           <Providers>
             <Header />
-            <main className="bg-primary grow w-full max-w-[1220px] mx-auto py-10 border">
+            <main className="grow w-full max-w-[1220px] mx-auto py-10">
               <SWRProvider>{children}</SWRProvider>
             </main>
           </Providers>
         </ProviderAuth>
+        <div id="portal" />
       </body>
     </html>
   );
