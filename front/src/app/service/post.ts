@@ -27,7 +27,6 @@ export async function getPosts(username: string) {
 }
 
 export async function getPost(id: string) {
-  console.log(id);
   return client
     .fetch(
       `*[_type=="post" &&_id == "${id}"][0] {

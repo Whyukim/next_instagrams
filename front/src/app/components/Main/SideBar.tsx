@@ -1,5 +1,7 @@
 "use client";
 
+import TextBold from "components/Elements/Texts/TextBold";
+import TextGray from "components/Elements/Texts/TextGray";
 import { User } from "model/user";
 import { useSession } from "next-auth/react";
 import Avatar from "../Elements/Avatar";
@@ -28,8 +30,8 @@ function SideBar({ user }: ISideBar) {
           <li className="flex gap-3">
             <Avatar image={user.image} size="large" />
             <span>
-              <h2 className="font-bold">{user.email}</h2>
-              <p className="text-gray-500 dark:text-gray-300">{user.name}</p>
+              <TextBold>{user.email}</TextBold>
+              <TextGray>{user.name}</TextGray>
             </span>
           </li>
         )}

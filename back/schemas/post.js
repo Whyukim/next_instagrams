@@ -1,4 +1,4 @@
-// schemas/pet.js
+// schemas/post.js
 export default {
   title: 'Post',
   name: 'post',
@@ -44,7 +44,7 @@ export default {
               to: [{type: 'user'}],
             },
             {
-              title: 'Comment', //
+              title: 'Comment',
               name: 'comment',
               type: 'string',
             },
