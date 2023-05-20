@@ -2,12 +2,12 @@
 
 import TextBold from "components/Elements/Texts/TextBold";
 import TextGray from "components/Elements/Texts/TextGray";
-import { User } from "model/user";
+import { AuthUser } from "model/user";
 import { useSession } from "next-auth/react";
 import Avatar from "../Elements/Avatar";
 
 interface ISideBar {
-  user: User;
+  user: AuthUser;
 }
 
 function SideBar({ user }: ISideBar) {

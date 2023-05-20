@@ -4,14 +4,14 @@ import "react-multi-carousel/lib/styles.css";
 import useSWR from "swr";
 import { SyncLoader } from "react-spinners";
 import Avatar from "../Elements/Avatar";
-import { DetailUser } from "model/user";
+import { HomeUser } from "model/user";
 import Link from "next/link";
 import ScrollableBar from "./ScrollableBar";
 
 interface IFollowingBar {}
 
 function FollowingBar({}: IFollowingBar) {
-  const { data, isLoading, error } = useSWR<DetailUser>("/api/me");
+  const { data, isLoading, error } = useSWR<HomeUser>("/api/me");
   // const users = undefined;
   const users = data?.following && [
     ...data?.following,

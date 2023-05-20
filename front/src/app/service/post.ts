@@ -15,7 +15,7 @@ const postProjection = `
 
 export async function getPosts(username: string) {
   let query = `
-  *[_type == "post" &&author->username=='${username}' 
+  *[_type == "post" && author->username=='${username}' 
   || author._ref in  *[_type == 'user' && username=='${username}'][0].following[]._ref]
   | order(_createdAt desc){${postProjection}}`;
 

@@ -3,20 +3,18 @@
 import { SearchUser } from "model/user";
 import useSWR from "swr";
 import { DotLoader } from "react-spinners";
-import TextBold from "components/Elements/Texts/TextBold";
-import TextGray from "components/Elements/Texts/TextGray";
-import Avatar from "components/Elements/Avatar";
-import Link from "next/link";
 import { useState } from "react";
 import UserCard from "./UserCard";
+import useDebounce from "hooks/useDebounce";
 
 function SearchForm() {
   const [keyword, setKeyword] = useState("");
+  const debouncedSearch = useDebounce(keyword, 1000);
   const {
     data: users,
     isLoading: loading,
     error,
-  } = useSWR<SearchUser[]>(`/api/search/${keyword}`);
+  } = useSWR<SearchUser[]>(`/api/search/${debouncedSearch}`);
 
   return (
     <section className="flex flex-col gap-7 items-center">
