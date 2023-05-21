@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getUserForProfile } from "service/user";
 import UserProfile from "components/Forms/User/UserProfile";
+import UserPosts from "components/Forms/User/UserPosts";
 
 interface IUserPage {
   params: { username: string };
@@ -15,7 +16,7 @@ async function userPage({ params: { username } }: IUserPage) {
   return (
     <section>
       <UserProfile user={user} />
-      {/* <UserPosts /> */}
+      <UserPosts user={user} />
     </section>
   );
 }
