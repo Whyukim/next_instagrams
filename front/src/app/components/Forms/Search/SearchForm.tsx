@@ -37,7 +37,7 @@ function SearchForm() {
       {users && (
         <ul className="flex flex-col gap-3 px-5 w-3/4">
           {users.map((user) => (
-            <UserCard user={user} />
+            <UserCard key={user.email} user={user} />
           ))}
         </ul>
       )}
