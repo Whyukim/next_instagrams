@@ -1,7 +1,3 @@
-import BookMarks from "components/Elements/icons/BookMarks";
-import Heart from "components/Elements/icons/Heart";
-import TextBold from "components/Elements/Texts/TextBold";
-import { parseDate } from "util/date";
 import PostActionBar from "./PostActionBar";
 import PostComment from "./PostComment";
 

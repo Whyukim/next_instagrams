@@ -2,6 +2,8 @@ import BookMarks from "components/Elements/icons/BookMarks";
 import Heart from "components/Elements/icons/Heart";
 import TextBold from "components/Elements/Texts/TextBold";
 import { parseDate } from "util/date";
+import useSWR from "swr";
+import { HomeUser } from "model/user";
 
 interface IPostActionBar {
   text?: string;
@@ -11,10 +13,12 @@ interface IPostActionBar {
 }
 
 function PostActionBar({ text, likes, username, createdAt }: IPostActionBar) {
+  const { data } = useSWR<HomeUser>("/api/me");
+
   return (
     <div className="grid gap-3 p-3">
       <div className="flex justify-between items-center">
-        <Heart fill={false} />
+        <Heart fill={data ? likes.includes(data?.username) : false} />
         <BookMarks fill={false} />
       </div>
       <b className="font-semibold">{`${likes?.length ?? 0} ${

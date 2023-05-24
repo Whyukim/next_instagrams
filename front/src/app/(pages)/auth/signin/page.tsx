@@ -1,9 +1,9 @@
 import { authOptions } from "api/auth/[...nextauth]/route";
 import SignIn from "components/Elements/Buttons/SignIn";
-import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { getProviders } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Signin",

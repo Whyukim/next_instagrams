@@ -4,9 +4,7 @@ import { SimplePost } from "model/post";
 import { DotLoader } from "react-spinners";
 import useSWR from "swr";
 
-interface IPostList {}
-
-function PostList({}: IPostList) {
+function PostList() {
   const { data: posts, isLoading: loading } =
     useSWR<SimplePost[]>("/api/posts");
 

@@ -15,7 +15,7 @@ interface IPostCard {
 function PostCard({ post, priority = false }: IPostCard) {
   const { userImage, username, image, createdAt, likes, text } = post;
   const [openModal, setOpenModal] = useState(false);
-
+  console.log(username);
   return (
     <li className=" bg-blocks shadow-md shadow-neutral-300 border-2 rounded-xl">
       <PostHeader userImage={userImage} username={username} />

@@ -6,7 +6,11 @@ interface IHeart {
 }
 
 function Heart({ fill, size = 24 }: IHeart) {
-  return fill ? <BsFillHeartFill size={size} /> : <BsHeart size={size} />;
+  return fill ? (
+    <BsFillHeartFill color="red" size={size} />
+  ) : (
+    <BsHeart size={size} />
+  );
 }
 
 export default Heart;
