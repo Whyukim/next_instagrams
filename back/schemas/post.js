@@ -1,4 +1,3 @@
-// schemas/post.js
 export default {
   title: 'Post',
   name: 'post',

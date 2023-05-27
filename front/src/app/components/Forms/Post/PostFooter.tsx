@@ -1,22 +1,15 @@
+import { SimplePost } from "model/post";
 import PostActionBar from "./PostActionBar";
 import PostComment from "./PostComment";
 
 interface IPostFooter {
-  likes: string[];
-  username: string;
-  text?: string;
-  createdAt: string;
+  post: SimplePost;
 }
 
-function PostFooter({ likes, username, text, createdAt }: IPostFooter) {
+function PostFooter({ post }: IPostFooter) {
   return (
     <div>
-      <PostActionBar
-        likes={likes}
-        username={username}
-        text={text}
-        createdAt={createdAt}
-      />
+      <PostActionBar post={post} />
       <PostComment />
     </div>
   );

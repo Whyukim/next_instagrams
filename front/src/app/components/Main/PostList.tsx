@@ -1,12 +1,11 @@
 "use client";
+
 import PostCard from "components/Forms/Post/PostCard";
-import { SimplePost } from "model/post";
+import usePosts from "hooks/posts";
 import { DotLoader } from "react-spinners";
-import useSWR from "swr";
 
 function PostList() {
-  const { data: posts, isLoading: loading } =
-    useSWR<SimplePost[]>("/api/posts");
+  const { posts, isLoading: loading } = usePosts();
 
   return (
     <section>

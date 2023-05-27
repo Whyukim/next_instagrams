@@ -1,4 +1,3 @@
-// schemas/user.js
 export default {
   title: 'User',
   name: 'user',

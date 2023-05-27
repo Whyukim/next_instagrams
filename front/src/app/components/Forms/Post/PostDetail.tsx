@@ -45,7 +45,7 @@ function PostDetail({ post }: IPostDetail) {
               )
             )}
         </ul>
-        <PostFooter likes={likes} username={username} createdAt={createdAt} />
+        <PostFooter post={post} />
       </div>
     </section>
   );
