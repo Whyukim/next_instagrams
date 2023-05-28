@@ -1,8 +1,8 @@
 "use client";
 
-import { HomeUser, ProfileUser } from "model/user";
-import useSWR from "swr";
+import { ProfileUser } from "model/user";
 import Button from "./Button";
+import useMe from "hooks/me";
 
 interface IFollowButton {
   user: ProfileUser;
@@ -10,7 +10,7 @@ interface IFollowButton {
 
 function FollowButton({ user }: IFollowButton) {
   const { username } = user;
-  const { data: loggedInUser } = useSWR<HomeUser>("/api/me");
+  const { user: loggedInUser } = useMe();
 
   const showButton = loggedInUser && loggedInUser.username !== username;
   const following =

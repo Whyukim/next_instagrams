@@ -10,21 +10,25 @@ import BookMarksFill from "components/Elements/icons/BookMarksFill";
 import { SimplePost } from "model/post";
 import { useSession } from "next-auth/react";
 import usePosts from "hooks/posts";
+import useMe from "hooks/me";
 interface IPostActionBar {
   post: SimplePost;
 }
 
 function PostActionBar({ post }: IPostActionBar) {
   const { id, likes, username, text, createdAt } = post;
-  const { data: session } = useSession();
-  const user = session?.user;
-  const liked = user ? likes.includes(user.username) : false;
-  const [bookmarked, setBookmarked] = useState(false);
+  const { user, setBookmark } = useMe();
   const { setLike } = usePosts();
+
+  const liked = user ? likes.includes(user.username) : false;
+  const bookmarked = user?.bookmarks.includes(id) ?? false;
+
   const handleLike = (like: boolean) => {
-    if (user) {
-      setLike(post, user.username, like);
-    }
+    if (user) setLike(post, user.username, like);
+  };
+
+  const handleBookmark = (bookmark: boolean) => {
+    if (user) setBookmark(id, bookmark);
   };
 
   return (
@@ -38,7 +42,7 @@ function PostActionBar({ post }: IPostActionBar) {
         />
         <ToggleButton
           toggled={bookmarked}
-          onToggle={setBookmarked}
+          onToggle={handleBookmark}
           onIcon={<BookMarksFill />}
           offIcon={<BookMarks />}
         />

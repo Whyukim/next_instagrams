@@ -83,7 +83,7 @@ export async function likePost(postId: string, userId: string) {
     .setIfMissing({ likes: [] })
     .append("likes", [
       {
-        _ref: `${userId}`,
+        _ref: userId,
         _type: "reference",
       },
     ])
