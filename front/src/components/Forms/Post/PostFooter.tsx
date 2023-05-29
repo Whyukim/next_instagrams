@@ -4,12 +4,13 @@ import PostComment from "./PostComment";
 
 interface IPostFooter {
   post: SimplePost;
+  children?: React.ReactNode;
 }
 
-function PostFooter({ post }: IPostFooter) {
+function PostFooter({ post, children }: IPostFooter) {
   return (
     <div>
-      <PostActionBar post={post} />
+      <PostActionBar post={post}>{children}</PostActionBar>
       <PostComment />
     </div>
   );

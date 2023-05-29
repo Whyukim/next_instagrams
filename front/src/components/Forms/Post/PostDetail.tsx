@@ -1,18 +1,18 @@
 import Avatar from "components/Elements/Avatar";
 import TextBold from "components/Elements/Texts/TextBold";
-import { FullPost, SimplePost } from "model/post";
+import { SimplePost } from "model/post";
 import Image from "next/image";
-import useSWR from "swr";
-import PostFooter from "./PostFooter";
 import PostHeader from "./PostHeader";
+import PostActionBar from "./PostActionBar";
+import useFullPost from "hooks/post";
 
 interface IPostDetail {
   post: SimplePost;
 }
 
 function PostDetail({ post }: IPostDetail) {
-  const { id, userImage, username, image, createdAt, likes } = post;
-  const { data } = useSWR<FullPost>(`/api/posts/${id}`);
+  const { id, userImage, username, image } = post;
+  const { post: data, postComment } = useFullPost(id);
   const comments = data?.comments;
 
   return (
@@ -45,7 +45,7 @@ function PostDetail({ post }: IPostDetail) {
               )
             )}
         </ul>
-        <PostFooter post={post} />
+        <PostActionBar post={post} onComment={postComment} />
       </div>
     </section>
   );

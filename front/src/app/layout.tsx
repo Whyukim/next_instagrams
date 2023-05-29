@@ -1,10 +1,11 @@
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
-import Header from "./components/Headers/Header";
-import ProviderAuth from "./context/AuthContext";
-import Providers from "./context/ThemeContext";
-import SWRProvider from "./context/SWRConText";
 import { Metadata } from "next";
+
+import Header from "components/Headers/Header";
+import ProviderAuth from "context/AuthContext";
+import Providers from "context/ThemeContext";
+import SWRProvider from "context/SWRConText";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 

@@ -1,14 +1,14 @@
-export interface Comment {
+export type Comment = {
   comment: string;
   username: string;
-  image: string;
-}
+  image?: string | undefined;
+};
 
 export type SimplePost = Omit<FullPost, "comments"> & {
   comments: number;
 };
 
-export interface FullPost {
+export type FullPost = {
   id: string;
   username: string;
   userImage: string;
@@ -17,4 +17,4 @@ export interface FullPost {
   createdAt: string;
   likes: string[];
   comments: Comment[];
-}
+};
