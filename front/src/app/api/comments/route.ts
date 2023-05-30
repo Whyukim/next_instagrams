@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
   const user = session?.user;
 
-  if (!user) { 
+  if (!user) {
     return new Response("Auth Error", { status: 401 });
   }
 

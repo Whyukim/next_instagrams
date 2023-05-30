@@ -10,6 +10,7 @@ interface IPostComment {
 function PostComment({ onPostComment }: IPostComment) {
   const [comment, setComment] = useState("");
   const buttonDisabled = comment.length === 0;
+
   const onSubmit = useCallback(
     (e: FormEvent) => {
       e.preventDefault();

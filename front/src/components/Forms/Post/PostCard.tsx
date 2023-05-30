@@ -19,6 +19,7 @@ function PostCard({ post, priority = false }: IPostCard) {
   const [openModal, setOpenModal] = useState(false);
   const { postComment } = usePosts();
   const handlePostComment = (comment: Comment) => {
+    console.log(comment);
     postComment(post, comment);
   };
 

@@ -31,6 +31,7 @@ function PostActionBar({ post, children, onComment }: IPostActionBar) {
   };
 
   const handleComment = (comment: string) => {
+    console.log(comment);
     user && onComment({ comment, username: user.username, image: user.image });
   };
 

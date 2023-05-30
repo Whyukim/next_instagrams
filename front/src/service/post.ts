@@ -106,8 +106,8 @@ export async function addComment(
 ) {
   return client
     .patch(postId)
-    .setIfMissing({ comment: [] })
-    .append("comment", [
+    .setIfMissing({ comments: [] })
+    .append("comments", [
       {
         comment,
         author: { _ref: userId, _type: "reference" },
