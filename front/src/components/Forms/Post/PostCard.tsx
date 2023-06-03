@@ -1,4 +1,5 @@
 "use client";
+
 import ModalPortal from "components/Elements/Modals/ModalPortal";
 import PostModal from "components/Elements/Modals/PostModal";
 import { Comment, SimplePost } from "model/post";
@@ -18,8 +19,8 @@ function PostCard({ post, priority = false }: IPostCard) {
   const { userImage, username, image, comments, text } = post;
   const [openModal, setOpenModal] = useState(false);
   const { postComment } = usePosts();
+
   const handlePostComment = (comment: Comment) => {
-    console.log(comment);
     postComment(post, comment);
   };
 
