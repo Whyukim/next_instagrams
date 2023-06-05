@@ -1,18 +1,11 @@
 "use client";
 
-import { SimplePost } from "model/post";
 import { DotLoader } from "react-spinners";
-import useSWR from "swr";
 import UserPostGridCard from "./UserPostGridCard";
-interface IUserPostsGrid {
-  username: string;
-  query: string;
-}
+import usePosts from "hooks/posts";
 
-function UserPostsGrid({ username, query }: IUserPostsGrid) {
-  const { data: posts, isLoading } = useSWR<SimplePost[]>(
-    `/api/users/${username}/${query}`
-  );
+function UserPostsGrid() {
+  const { posts, isLoading } = usePosts();
 
   return (
     <div className="w-full text-center">
