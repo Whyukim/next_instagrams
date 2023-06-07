@@ -22,6 +22,7 @@ export default function useFullPost(postId: string) {
   const postComment = useCallback(
     (comment: Comment) => {
       if (!post) return;
+
       const newPost = {
         ...post,
         comments: [...post.comments, comment],
@@ -36,5 +37,6 @@ export default function useFullPost(postId: string) {
     },
     [post, mutate, globalMutate]
   );
+
   return { post, isLoading, error, postComment };
 }

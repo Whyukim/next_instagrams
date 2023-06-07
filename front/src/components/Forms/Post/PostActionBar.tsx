@@ -8,6 +8,7 @@ import { Comment, SimplePost } from "model/post";
 import usePosts from "hooks/posts";
 import useMe from "hooks/me";
 import PostComment from "./PostComment";
+import { useCacheKeys } from "context/CacheKeyContext";
 interface IPostActionBar {
   post: SimplePost;
   children?: React.ReactNode;
@@ -31,7 +32,6 @@ function PostActionBar({ post, children, onComment }: IPostActionBar) {
   };
 
   const handleComment = (comment: string) => {
-    console.log(comment);
     user && onComment({ comment, username: user.username, image: user.image });
   };
 

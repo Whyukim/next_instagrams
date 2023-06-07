@@ -2,6 +2,7 @@
 import { ProfileUser } from "model/user";
 import { MouseEvent, useCallback, useState } from "react";
 import UserPostsGrid from "./UserPostsGrid";
+import { CacheKeysContext } from "context/CacheKeyContext";
 
 interface IUserPosts {
   user: ProfileUser;
@@ -9,10 +10,10 @@ interface IUserPosts {
 
 const tabs = ["posts", "saved", "liked"];
 function UserPosts({ user: { username } }: IUserPosts) {
-  const [status, setStatus] = useState("posts");
+  const [query, setQuery] = useState("posts");
 
   const onClick = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    setStatus(e.currentTarget.innerText);
+    setQuery(e.currentTarget.innerText);
   }, []);
 
   return (
@@ -23,14 +24,18 @@ function UserPosts({ user: { username } }: IUserPosts) {
             key={index}
             onClick={onClick}
             className={`uppercase border-black pt-4 ${
-              status.toLocaleLowerCase() == v && "font-bold border-t"
+              query.toLocaleLowerCase() == v && "font-bold border-t"
             } `}
           >
             {v}
           </button>
         ))}
       </li>
-      <UserPostsGrid username={username} query={status} />
+      <CacheKeysContext.Provider
+        value={{ postsKey: `/api/users/${username}/${query}` }}
+      >
+        <UserPostsGrid />
+      </CacheKeysContext.Provider>
     </ul>
   );
 }
