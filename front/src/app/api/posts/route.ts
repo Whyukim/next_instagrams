@@ -1,35 +1,25 @@
-import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
 import { createPost, getPosts } from "service/post";
+import { sessionUser } from "util/session";
 
-export async function GET(request: Request) {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
-
-  if (!user) {
-    return new Response("Authentication Error", { status: 401 });
-  }
-
-  return getPosts(user.username).then((res) => NextResponse.json(res));
+export async function GET(_: Request) {
+  return sessionUser(async (user) =>
+    getPosts(user.username) //
+      .then((res) => NextResponse.json(res))
+  );
 }
 
 export async function POST(req: Request) {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
+  return sessionUser(async (user) => {
+    const form = await req.formData();
+    const text = form.get("text")?.toString();
+    const file = form.get("file") as Blob;
 
-  if (!user) {
-    return new Response("Authentication Error", { status: 401 });
-  }
+    if (!text || !file) {
+      return new Response("Bad Request", { status: 400 });
+    }
 
-  const form = await req.formData();
-  const text = form.get("text")?.toString();
-  const file = form.get("file") as Blob;
-
-  if (!text || !file) {
-    return new Response("Bad Request", { status: 400 });
-  }
-
-  return createPost(user.id, text, file) //
-    .then((data) => NextResponse.json(data));
+    return createPost(user.id, text, file) //
+      .then((data) => NextResponse.json(data));
+  });
 }

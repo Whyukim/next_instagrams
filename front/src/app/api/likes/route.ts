@@ -1,25 +1,19 @@
-import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { disLikePost, likePost } from "service/post";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { sessionUser } from "util/session";
 
 export async function PUT(req: NextRequest) {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
+  return sessionUser(async (user) => {
+    const { id, like } = await req.json();
 
-  if (!user) {
-    return new Response("Auth Error", { status: 401 });
-  }
+    if (!id || like === undefined) {
+      return new Response("Bad body", { status: 401 });
+    }
 
-  const { id, like } = await req.json();
+    const request = like ? likePost : disLikePost;
 
-  if (!id || like === undefined) {
-    return new Response("Bad body", { status: 401 });
-  }
-
-  const request = like ? likePost : disLikePost;
-
-  return request(id, user.id)
-    .then((res) => NextResponse.json(res))
-    .catch((error) => new Response(error, { status: 500 }));
+    return request(id, user.id)
+      .then((res) => NextResponse.json(res))
+      .catch((error) => new Response(error, { status: 500 }));
+  });
 }
