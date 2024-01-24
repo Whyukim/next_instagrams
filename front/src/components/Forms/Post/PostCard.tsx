@@ -25,7 +25,7 @@ function PostCard({ post, priority = false }: IPostCard) {
   };
 
   return (
-    <li className=" bg-blocks shadow-md shadow-neutral-300 border-2 rounded-xl">
+    <li className="bg-blocks shadow-md shadow-neutral-300 border-2 rounded-xl">
       <PostHeader userImage={userImage} username={username} />
       <div>
         <Image
